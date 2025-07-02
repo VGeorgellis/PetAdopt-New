@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{page_layout/layout}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Check Pets</title>
+</head>
+<body>
+<div layout:fragment="main-content">
+
+    <div th:if="${ not#lists.isEmpty(pets)}">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Photo</th>
+                <th>Name</th>
+                <th>Species</th>
+                <th>Sex</th>
+                <th>Health</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="pet : ${pets}" >
+                <td th:text="${pet.id}"></td>
+                <td>
+                    <img th:src="@{${pet.imageUrl}}" alt="Pet Image" width="100">
+                </td>
+                <td th:text="${pet.name}" ></td>
+                <td th:text="${pet.species}" ></td>
+                <td th:text="${pet.sex}"></td>
+                <td>
+                    <a class="btn btn-info" th:href="@{/pet/checked/healthy/{id} (id=${pet.id})}" th:utext="Healthy"/>
+                    <a class="btn btn-danger" th:href="@{/pet/checked/notHealthy/{id} (id=${pet.id})}" th:utext="Unhealthy"/>
+                </td>
+
+
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:if="${ #lists.isEmpty(pets)}">
+        No Pets found!
+    </div>
+
+</div>
+</body>
+</html>
+

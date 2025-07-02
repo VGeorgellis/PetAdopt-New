@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: petadopt-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: public
+  tls:
+    - hosts:
+        - petadopt.mydomain.duckdns.org
+      secretName: petadopt-tls
+  rules:
+    - host: petadopt.mydomain.duckdns.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: petadopt-service
+                port:
+                  number: 80

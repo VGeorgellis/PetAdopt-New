@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{page_layout/layout}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>PetAdopt</title>
+</head>
+<body>
+<div layout:fragment="main-content">
+
+<!--th:replace="page_layout/header :: section"-->
+    <section class="py-5 text-center container"   style="background-image: url('https://as1.ftcdn.net/v2/jpg/06/85/24/74/1000_F_685247405_8Rjb3hZvhI4aWLaow8tyEx4jT5BnzPx6.jpg'); background-size: cover; background-position: center; color: white; ">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <p class="lead text-body-secondary" style="color: rgba(255, 255, 255, 0.8);"></p>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>

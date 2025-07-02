@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: petadopt-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: petadopt
+  template:
+    metadata:
+      labels:
+        app: petadopt
+    spec:
+      containers:
+        - name: petadopt
+          image: ghcr.io/omada63/petadopt:latest
+          ports:
+            - containerPort: 8080
